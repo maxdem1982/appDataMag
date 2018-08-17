@@ -1,0 +1,7 @@
+{
+  "name": "uno",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
