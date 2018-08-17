@@ -7,12 +7,39 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
+  <ion-list>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label floating primary>Name</ion-label>
+        <ion-input [(ngModel)]="userInfo.name" formControlName="name" type="text"
+                   id="name" spellcheck="false" autocapitalize="off">
+        </ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('name')" danger padding-left>Invalid Name</p>
+      <ion-item>
+        <ion-label floating primary>Email</ion-label>
+        <ion-input [(ngModel)]="userInfo.email" formControlName="email"
+                   type="text" id="email" spellcheck="false" autocapitalize="off">
+        </ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('email')" danger padding-left>Invalid Email</p>
+      <ion-item>
+        <ion-label floating primary>Phone</ion-label>
+        <ion-input [(ngModel)]="userInfo.phone" formControlName="phone" type="text" id="phone">
+        </ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('phone')" danger padding-left>Invalid Phone</p>
+      <ion-item>
+        <ion-label floating primary>Anni</ion-label>
+        <ion-input [(ngModel)]="userInfo.anni" formControlName="anni" type="number" id="anni">
+        </ion-input>
+      </ion-item>
+      <p *ngIf="!isValid('anni')" danger padding-left>Invalid Anni</p>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+     
+      <button ion-button type="submit" block primary [disabled]="!myForm.valid">Submit</button>
+    </form>
+  </ion-list>
 </ion-content>
