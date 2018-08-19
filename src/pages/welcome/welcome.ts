@@ -5,12 +5,13 @@ import { NavController, IonicPage, LoadingController } from 'ionic-angular';
 import { EmailValidator } from  '../../validators/email';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { map } from 'rxjs/operators'
- 
+
+
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-welcome',
+  templateUrl: 'welcome.html'
 })
-export class HomePage {
+export class WelcomePage {
 
   url = 'http://massimodemattia.altervista.org/progetto/api/utente/login.php?';
  /*
