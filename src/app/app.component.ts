@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { RegistrazionePage } from '../pages/registrazione/registrazione';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,18 +16,23 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = WelcomePage;
+  nome: String;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, onlyAdmin: boolean}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private storage: Storage) {
     this.initializeApp();
+
+    storage.get('nome').then((val) =>{
+     this.nome = val;  
+    }) ;
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Welcome', component: WelcomePage },
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Registrazione', component: RegistrazionePage }
+      { title: 'Welcome', component: WelcomePage, onlyAdmin: false },
+      { title: 'Home', component: HomePage, onlyAdmin: false },
+      { title: 'List', component: ListPage, onlyAdmin: false },
+      { title: 'Registrazione', component: RegistrazionePage, onlyAdmin: false }
     ];
 
   }

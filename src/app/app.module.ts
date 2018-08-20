@@ -12,6 +12,7 @@ import { HttpModule } from "@angular/http";
 import {HttpClientModule} from '@angular/common/http';
 import { WelcomePage } from '../pages/welcome/welcome';
 
+import {IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
@@ -23,7 +24,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,6 +37,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
   providers: [
     StatusBar,
     SplashScreen,
+    Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

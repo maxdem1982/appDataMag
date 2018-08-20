@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, IonicPage, LoadingController } from 'ionic-angular';
+import { NavController, IonicPage, LoadingController, MenuController } from 'ionic-angular';
 
 import { EmailValidator } from  '../../validators/email';
 import { Http, Headers, RequestOptions } from "@angular/http";
@@ -12,67 +12,14 @@ import { map } from 'rxjs/operators'
 })
 export class HomePage {
 
-  url = 'http://massimodemattia.altervista.org/progetto/api/utente/login.php?';
- /*
-  account: { email: string, password: string } = {
-    email: '',
-    password: ''
-  };
-*/
-  
-    //@ViewChild('signupSlider') signupSlider: any;
-    slideOneForm: FormGroup;
-    submitAttempt: boolean = false;
-    loginAttempt: boolean = false;
-    
- 
-    constructor(public navCtrl: NavController, public formBuilder: FormBuilder, 
-      public loadingCtrl: LoadingController, public http: Http,) {
- 
-      this.slideOneForm = formBuilder.group({
-          email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z]\\w*@[a-zA-Z0-9-]+\.[a-zA-Z]{0,4}')]), EmailValidator.checkEmail],
-          password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(30), Validators.pattern('[a-zA-Z\\w]*'), Validators.required])]
-      });
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, 
+      public loadingCtrl: LoadingController, public http: Http,public menu: MenuController) {
+        this.menu.enable(true, "menuAll");
   }
 
-  login(email: HTMLInputElement, password: HTMLInputElement): void {
-      
-      if(!this.slideOneForm.valid){
-        this.submitAttempt = true;
-      }else {
-
-        //invocare il servizio che verifica il login
-        const loader = this.loadingCtrl.create({
-          content: "Please wait...",
-          duration: 3000
-        });
-        loader.present();
-        var myData = JSON.stringify({email: email.value, password: password.value});
-        
-        
-
-        this.http.post(this.url, myData).subscribe( (data) =>{
-          var jsonObj = JSON.parse(data["_body"]);
-            if(jsonObj.success){
-              alert('success '+jsonObj.success);
-              alert('id'+jsonObj.utente.id);
-            }else{
-              alert('success '+jsonObj.success);
-              this.loginAttempt = true;
-            }
-          });
-
-        console.log("login success!")
-        console.log(this.slideOneForm.value);
-      }
-    }
-
-    signup() {
-      this.navCtrl.push('RegistrazionePage');
-    }
-
-    presentLoading() {
-     
-    }
+  toScarico() {
+    alert('TODO');
+    //this.navCtrl.push('');
+  }
  
 }

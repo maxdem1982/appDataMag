@@ -7,48 +7,30 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list no-lines>
-   
-      <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
-      <p *ngIf="loginAttempt" style="color: #ea6153;">Utente inesistente!</p>
-   
-          <form [formGroup]="slideOneForm">
-   
-              <ion-item>
-                  <ion-label floating>Email</ion-label>
-                  <ion-input #email [class.invalid]="!slideOneForm.controls.email.valid && (slideOneForm.controls.email.dirty || submitAttempt)" formControlName="email" type="text"></ion-input>
-              </ion-item>
+<ion-content padding>
+    <!-- Float the icon right -->
+    <button ion-button icon-end (click)="toScarico()">
+      Scarico
+      <ion-icon name="cloud-download"></ion-icon>
+    </button>
+    
+    <button ion-button icon-end>
+        Carico
+        <ion-icon name="cloud-upload"></ion-icon>
+    </button>
 
-              <ion-item *ngIf="slideOneForm.controls.email.pending">
-                  <p>Checking email...</p>
-              </ion-item>
+    <button ion-button icon-end>
+        Inventario
+        <ion-icon name="basket"></ion-icon>
+    </button>
 
-              <ion-item *ngIf="!slideOneForm.controls.email.valid && !slideOneForm.controls.email.pending && (slideOneForm.controls.email.dirty || submitAttempt)">
-                  <p>Sorry, that email can not be used!</p>
-              </ion-item>
-   
-              <ion-item>
-                <ion-label floating>Password</ion-label>
-                <ion-input #password formControlName="password" type="password" [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)"></ion-input>
-              </ion-item>
-  
-              <ion-item *ngIf="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
-                  <p>Please enter a valid password.</p>
-              </ion-item>
+    <button ion-button icon-end>
+        Ricerca
+        <ion-icon name="search"></ion-icon>
+    </button>
 
-         
-
-          <div padding>
-            <button ion-button color="primary" block (click)="login(email, password)">Accedi</button>
-            <button ion-button block (click)="signup()">Registrati</button>
-          </div>
-
-        </form>
-      </ion-list>
-   
-     
-   
-  
-
+    <button ion-button icon-end>
+        Account
+        <ion-icon name="person"></ion-icon>
+    </button>
 </ion-content>
