@@ -1,12 +1,19 @@
-class Utente { 
+export class Utente { 
+    id: number; 
     nome: String; 
     cognome: String; 
+    email: String; 
+    tipo_utente: String; 
      
-    constructor(nome: String, cognome: String) { 
+    constructor(id: number, nome: String, cognome: String, email: String, tipo_utente: String) { 
+        this.id = id; 
         this.nome = nome; 
         this.cognome = cognome; 
+        this.email = email; 
+        this.tipo_utente = tipo_utente; 
     }
 
+/*
     getNome(){
         return this.nome;
     }
@@ -26,4 +33,5 @@ class Utente {
     visualizzaNomeCognome() {
         return this.nome + ' ' + this.cognome; 
     } 
+    */
 } 

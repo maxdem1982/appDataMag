@@ -51,7 +51,7 @@ export class WelcomePage {
         //invocare il servizio che verifica il login
         const loader = this.loadingCtrl.create({
           content: "Please wait...",
-          duration: 3000
+          duration: 1000
         });
         loader.present();
         var myData = JSON.stringify({email: email.value, password: password.value});
@@ -62,7 +62,8 @@ export class WelcomePage {
           var jsonObj = JSON.parse(data["_body"]);
             if(jsonObj.success){
              // alert('success '+jsonObj.success);
-              this.navCtrl.push(HomePage);
+              //this.navCtrl.push(HomePage);
+              this.navCtrl.setRoot(HomePage);
              // alert('id'+jsonObj.utente.id);
              this.storage.set('nome', jsonObj.utente.nome );
             }else{

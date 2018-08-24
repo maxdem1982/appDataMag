@@ -25,7 +25,7 @@
    
       <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
    
-          <form [formGroup]="slideOneForm">
+          <form [formGroup]="slideOneForm" (ngSubmit)="createUser(slideOneForm.value)">
    
               <ion-item>
                   <ion-label floating>Email</ion-label>
@@ -41,20 +41,20 @@
               </ion-item>
 
               <ion-item>
-                  <ion-label floating>First Name</ion-label>
-                  <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
+                  <ion-label floating>Nome</ion-label>
+                  <ion-input formControlName="nome" type="text" [class.invalid]="!slideOneForm.controls.nome.valid && (slideOneForm.controls.nome.dirty || submitAttempt)"></ion-input>
               </ion-item>
    
-              <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+              <ion-item *ngIf="!slideOneForm.controls.nome.valid  && (slideOneForm.controls.nome.dirty || submitAttempt)">
                   <p>Please enter a valid name.</p>
               </ion-item>
    
               <ion-item>
-                  <ion-label floating>Last Name</ion-label>
-                  <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.lastName.dirty || submitAttempt)"></ion-input>
+                  <ion-label floating>Cognome</ion-label>
+                  <ion-input formControlName="cognome" type="text" [class.invalid]="!slideOneForm.controls.cognome.valid && (slideOneForm.controls.cognome.dirty || submitAttempt)"></ion-input>
               </ion-item>
    
-              <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+              <ion-item *ngIf="!slideOneForm.controls.cognome.valid  && (slideOneForm.controls.cognome.dirty || submitAttempt)">
                   <p>Please enter a valid name.</p>
               </ion-item>
    
@@ -67,7 +67,7 @@
                   <p>Please enter a valid password.</p>
               </ion-item>
 
-          <button ion-button full color="primary" (click)="save()">Create Account!</button>
+          <button ion-button full color="primary" type="submit" >Create Account!</button>
         </form>
       </ion-list>
    

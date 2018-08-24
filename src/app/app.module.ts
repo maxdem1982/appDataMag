@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import {IonicStorageModule } from '@ionic/storage';
+import { UserProvider } from '../providers/userProvider';
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +39,8 @@ import {IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Storage,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}
